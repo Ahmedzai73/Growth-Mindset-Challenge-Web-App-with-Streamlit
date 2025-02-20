@@ -1,50 +1,101 @@
-# steamlit
-
 import streamlit as st
-st.set_page_config(page_title="growth mindset project", project_icon="💻")
-st.title("Growth Mindset Challenge: Web App with Streamlit")
 
-st.header("🎉 welcome to your growth journey!")
-st.write("Embarace Challanges, learn from mistakes, and unlock you full potential.this AI-powered app help you to build")
+# Page Configuration
+st.set_page_config(
+    page_title="Growth Mindset Project",
+    page_icon="💻",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-# quote section
-st.header("💫 Today's Growth Mindset Quote")
-st.write("Success is not final; failure is not fatal: it is the courage to continue that counts. - Winston Churchill")
+# Main Title (kept from your original)
+st.title("Growth Mindset Challenge")
 
-st.header("⚙️ what's Your Challange Today?")
-user_input = st.text_input("Discribe a challange you're facing:")
+# Welcome Section
+st.header("🎉 Begin Your Growth Journey")
+st.write("""
+    Welcome to an empowering experience designed to help you embrace challenges, 
+    learn from setbacks, and realize your full potential. This application provides 
+    a structured platform to support your personal and professional development.
+""")
 
+# Quote Section
+st.header("💫 Daily Inspiration")
+quote = "Success is not final; failure is not fatal: It is the courage to continue that counts."
+st.markdown(f"> {quote}  \n> *— Winston Churchill*")
 
-# condition
+# Challenge Section
+st.header("⚙️ Identify Your Current Challenge")
+user_input = st.text_input(
+    "Please describe a challenge you are currently addressing:",
+    placeholder="Enter your challenge here"
+)
+
 if user_input:
     st.success(
-        f"you re facing:{user_input}.keep pushing forward towords your goal!")
+        f"Your current challenge: '{user_input}'. Stay focused and proactive in pursuing your goals."
+    )
 else:
-    st.warning("Tell us about your challange to get started!")
+    st.warning("Please enter a challenge to begin your progress tracking.")
 
-
-# reflexing
-
-    st.header("reflection on your Learning")
-    reflection = st.text_area("Write your reflections here:")
+# Reflection Section
+st.header("🧠 Reflect on Your Insights")
+reflection = st.text_area(
+    "Document your reflections on recent experiences:",
+    placeholder="What insights have you gained from your journey?",
+    height=150
+)
 
 if reflection:
-    st.success(
-        f"Great Insight! your reflection: {reflection}")
+    st.success(f"Valuable insight recorded: '{reflection}'")
 else:
-    st.info("reflection on past experience help you grow! your defficulties")
-    
-    #acheivements
-    st.header("celebrate your Wins!")
-    acheivment = st.text_input("Share something you've recently acccomplished:")
-    
-    if acheivment:
-        st.success(f"Amazing! you achived: {acheivment}")
-    else:
-        st.info("Big or small , every acheivement counts Share on now")
+    st.info("Reflection is a key step in personal growth. Please share your thoughts.")
 
-#footer
-st.write("--------")
-st.write("Keep believing in yourself. Growth is a journey, not a estination")
-st.write("**Created by Ahmed zai**")
+# Achievements Section
+st.header("🏆 Recognize Your Achievements")
+achievement = st.text_input(
+    "Share a recent accomplishment:",
+    placeholder="Highlight a success you’re proud of"
+)
 
+if achievement:
+    st.success(f"Congratulations on your accomplishment: '{achievement}'")
+else:
+    st.info("Acknowledging achievements, no matter the scale, fosters motivation. Share one today.")
+
+# Sidebar
+with st.sidebar:
+    st.header("Application Overview")
+    st.write("""
+        This tool enables you to:
+        - Monitor your challenges
+        - Document reflective insights
+        - Celebrate your accomplishments
+    """)
+    st.write("Developed by Ahmed Zai")
+
+# Footer
+st.markdown("---")
+st.markdown("""
+    <div style='text-align: center'>
+        Continue to believe in your potential. Growth is a continuous process, not a final endpoint.
+        <br>
+        <strong>Developed by Ahmed Zai</strong>
+    </div>
+""", unsafe_allow_html=True)
+
+# Add some styling
+st.markdown("""
+    <style>
+        .stApp {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .stTextInput > div > div > input {
+            border-radius: 8px;
+        }
+        .stTextArea > div > div > textarea {
+            border-radius: 8px;
+        }
+    </style>
+""", unsafe_allow_html=True)
